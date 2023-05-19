@@ -60,6 +60,6 @@ const atras = () => {
     </div>
   );
 };
-
+//Peticion al api de lol
 
 export default PeticionApiLoL
