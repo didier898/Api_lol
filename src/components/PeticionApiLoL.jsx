@@ -22,10 +22,8 @@ const PeticionApiLoL = () => {
 };
 
 const atras = () => {
-  if (paginacion > 1) {
     setPaginacion(paginacion - 1);
     TraerCampeones();
-  }
 };
 
 
@@ -43,13 +41,16 @@ const atras = () => {
           <h4>
             {campeon.name}
           </h4>
+          <img
+            src={`http://ddragon.leagueoflegends.com/cdn/13.10.1/img/champion/${campeon.image.full}`}
+            alt={campeon.name}
+          />
+          <p>Armadura: {campeon.stats.armor}</p>
+        </div>
+      ))}
     </div>
-))}
-</div>
-
-  )
-  
-}
+  );
+};
 
 
 export default PeticionApiLoL
