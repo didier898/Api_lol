@@ -3,14 +3,23 @@ import React from 'react'
 const PeticionApiLoL = () => {
     const [campeones, setCampeones] = React.useState([]);
     const [paginacion, setPaginacion] = React.useState(1);
+    const campeonesPorPagina = 10;
 
     const TraerCampeones = async () => {
         try {
           const res = await fetch(`http://ddragon.leagueoflegends.com/cdn/13.10.1/data/en_US/champion.json?page=${paginacion}`);
           const data = await res.json();
-          const campeones = Object.values(data.data);
-      setCampeones(campeones);
-      console.log(campeones);
+          const Campeones = Object.values(data.data);
+          const inicio = (paginacion - 1) * campeonesPorPagina;
+          const fin = paginacion * campeonesPorPagina;
+          const campeonesPagina = [];
+          for (let i = inicio; i < fin && i < Campeones.length; i++) {
+            campeonesPagina.push(Campeones[i]);
+          }
+          
+
+      setCampeones(campeonesPagina);
+      console.log(campeonesPagina);
     } catch (error) {
       console.log(error);
     }
