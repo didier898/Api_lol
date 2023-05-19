@@ -7,7 +7,7 @@ const PeticionApiLoL = () => {
 
     const TraerCampeones = async () => {
         try {
-          const res = await fetch(`http://ddragon.leagueoflegends.com/cdn/13.10.1/data/en_US/champion.json?page=${paginacion}`);
+            const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/13.10.1/data/en_US/champion.json?page=${paginacion}`);
           const data = await res.json();
           const Campeones = Object.values(data.data);
           const inicio = (paginacion - 1) * campeonesPorPagina;
